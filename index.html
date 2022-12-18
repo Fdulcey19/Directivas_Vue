@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- CSS only -->
+    <title>VUE</title>
+
+</head>
+
+<body class="bg-warning">
+    <div class="container bg-dark text-light mt-2 w-50 ">
+        <main id="app" class="row gap-3 ">
+
+            <div>
+                <h1><code>Directiva</code> </h1>
+                <h2>Tu nombre es: {{name}} </h2>
+                <h2>tienes: {{age}} años</h2>
+                <hr>
+            </div>
+
+            <div>
+                <h1>Directiva <code>v-text</code></h1>
+                <h3 v-text="nombre"></h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-html</code></h1>
+                <div v-html="correo"></div>
+                <div v-html="loginType"></div>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-show</code></h1>
+                <h3 v-show="age>18">Eres mayor de edad</h3>
+                <h3 v-show="age<18">Eres menor de edad</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-if</code></h1>
+                <h3 v-if="age>18">Eres mayor de edad</h3>
+                <h3 v-if="age<18">Eres menor de edad</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-if-else</code></h1>
+                <h3 v-if="gender === 'F'">Eres mujer</h3>
+                <h3 v-else-if="gender === 'M'">Eres Hombre</h3>
+                <h3 v-else-if="gender === 'O'">Eres otro</h3>
+                <h3 v-else>No identificado</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-for</code></h1>
+                <h3 v-for="animal, index in animals" :key="index">{{index+1}} {{animal}}</h3>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-on</code></h1>
+                <button class="btn btn-primary mx-2" v-on:click="counter += 1">Agregar</button>
+                <button class="btn btn-success" v-on:click="counter -= 1">Reset</button>
+                <p>Se ha hecho <b>{{counter}}</b>clicls</p>
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-bind</code></h1>
+                <img v-bind:src="img" v-bind:alt="alt" v-bind:style="border">
+                <img :src="img" :alt="alt" :style="border">
+                <hr>
+            </div>
+            <div>
+                <h1>Directiva <code>v-model</code></h1>
+                <h2>Tu nombre es: <b class="text-primary">😀🙂{{name}}</b></h2>
+                <label class="form-label" for="">Tu nombre es:</label>
+                <input class="form-control redonde" type="text" v-model="name" placeholder="example@gmail.com">
+                <hr>
+                <h1>Ejemplo 2</h1>
+                <input class="form-control redonde" v-model="message" placeholder="Editame">
+                <p>El mensaje es: <b class="text-warning ">{{message}}</b></p>
+                <hr>
+            </div>
+
+
+
+        </main>
+        <section id="app1">
+
+        </section>
+    </div>
+    <script>
+        const hola = {
+            data() {
+                return {
+                    nombre: "Felipe Dulcey",
+                    name: "Felipe Dulcey",
+                    age: 21,
+                    gender: "M",
+                    animals: ["gato", "perro", "pajaro", "loro", "cerdo", "caballo"],
+                    loginType: "<h2>FDulcey</h2>",
+                    counter: 0,
+                    correo: "<h2 class=text-primary>fdulcey@misena.edu.co</h2",
+                    img: "./imagenes/ktm1290.jpg",
+                    alt: "logo",
+                    border: "border-radius:8px;border:10px solid red; margin-left:28px",
+                    message: " "
+
+                };
+            },
+        };
+        const hello = {
+            data() {
+                return {
+                    direccion: "Barrio San Eduardo",
+                    telefono: 3226178911,
+                    edad: 21
+                }
+            }
+        }
+        Vue.createApp(hola).mount("#app");
+        Vue.createApp(hello).mount("#app1");
+
+    </script>
+</body>
+
+</html>
